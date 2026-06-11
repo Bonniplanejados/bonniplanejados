@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Bonni Planejados - Móveis planejados sob medida em Curitiba. Cozinhas, dormitórios, closets, home office e muito mais. Entrega em até 45 dias. Orçamento gratuito!">
+<meta name="description" content="Bonni Planejados - Móveis planejados sob medida em Curitiba. Cozinhas, dormitórios, closets, home office e muito mais. Entrega em até 30 dias. Orçamento gratuito!">
 <title>Bonni Planejados | Móveis Planejados em Curitiba</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -18,18 +19,34 @@ nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(250,247,242,0.97
 .nav-btn{background:var(--green);color:#fff;padding:0.5rem 1.1rem;border-radius:4px;font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:500;transition:background 0.2s}
 .nav-btn:hover{background:#1e3f28}
 
-/* HERO */
-.hero{min-height:100vh;display:flex;align-items:center;padding:7rem 2rem 4rem;background:linear-gradient(135deg,#FAF7F2 55%,#F0E8D8 100%);position:relative;overflow:hidden}
-.hero::after{content:'';position:absolute;right:-80px;top:50%;transform:translateY(-50%);width:500px;height:500px;border-radius:50%;background:rgba(200,144,58,0.06);pointer-events:none}
-.hero-inner{max-width:580px;position:relative;z-index:1}
-.badge{display:inline-block;background:rgba(200,144,58,0.15);color:var(--accent);font-size:0.7rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:0.3rem 0.9rem;border-radius:2px;margin-bottom:1.2rem}
-h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3rem);line-height:1.2;color:var(--wood-dark);margin-bottom:1.1rem}
+/* HERO — dois painéis lado a lado */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding-top:62px;background:linear-gradient(135deg,#FAF7F2 55%,#F0E8D8 100%)}
+
+/* Painel esquerdo — texto */
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:3rem 3rem 3rem 4rem}
+.badge{display:inline-block;background:rgba(200,144,58,0.15);color:var(--accent);font-size:0.7rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:0.3rem 0.9rem;border-radius:2px;margin-bottom:1.2rem;width:fit-content}
+h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.6rem);line-height:1.2;color:var(--wood-dark);margin-bottom:1rem}
 h1 em{font-style:normal;color:var(--accent)}
-.hero-sub{font-size:1rem;color:#5C4A30;line-height:1.7;margin-bottom:2rem;font-weight:300}
-.cta-group{display:flex;flex-wrap:wrap;gap:1rem;align-items:center}
-.btn-wa{display:inline-flex;align-items:center;gap:0.6rem;background:#25D366;color:#fff;padding:0.9rem 1.8rem;border-radius:4px;font-family:'DM Sans',sans-serif;font-weight:600;font-size:1rem;transition:background 0.2s,transform 0.2s;box-shadow:0 4px 16px rgba(37,211,102,0.3)}
+.hero-sub{font-size:0.95rem;color:#5C4A30;line-height:1.7;margin-bottom:1.8rem;font-weight:300}
+.cta-group{display:flex;flex-direction:column;gap:0.8rem;align-items:flex-start}
+.btn-wa{display:inline-flex;align-items:center;gap:0.6rem;background:#25D366;color:#fff;padding:0.85rem 1.6rem;border-radius:4px;font-family:'DM Sans',sans-serif;font-weight:600;font-size:0.95rem;transition:background 0.2s,transform 0.2s;box-shadow:0 4px 16px rgba(37,211,102,0.3)}
 .btn-wa:hover{background:#1ebe5a;transform:translateY(-2px)}
 .btn-tel{color:var(--wood-dark);font-family:'DM Sans',sans-serif;font-size:0.88rem;border-bottom:2px solid var(--accent);padding-bottom:2px}
+
+/* Selos de confiança */
+.trust-badges{display:flex;flex-wrap:wrap;gap:0.6rem;margin-top:1.4rem}
+.badge-item{display:flex;align-items:center;gap:0.4rem;background:#fff;border:1px solid rgba(139,94,60,0.15);border-radius:20px;padding:0.35rem 0.8rem;font-size:0.75rem;color:var(--wood-dark);font-weight:500}
+.badge-item span{font-size:0.9rem}
+
+/* Painel direito — grade de fotos */
+.hero-right{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:6px;padding:6px 6px 6px 0;min-height:0}
+.hero-photo{overflow:hidden;position:relative}
+.hero-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s}
+.hero-photo:hover img{transform:scale(1.04)}
+.hero-photo-label{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(92,61,30,0.75),transparent);color:#fff;font-size:0.75rem;font-weight:500;padding:0.8rem 0.7rem 0.5rem;opacity:0;transition:opacity 0.3s}
+.hero-photo:hover .hero-photo-label{opacity:1}
+/* Primeira foto maior — ocupa 2 linhas */
+.hero-photo.tall{grid-row:span 2}
 
 /* SECTIONS */
 section{padding:5rem 2rem}
@@ -90,17 +107,22 @@ footer strong{color:var(--accent)}
 .wa-float{position:fixed;bottom:24px;right:24px;z-index:999;background:#25D366;color:#fff;height:54px;border-radius:50px;display:flex;align-items:center;gap:0.6rem;padding:0 1.2rem 0 1rem;box-shadow:0 4px 20px rgba(37,211,102,0.5);transition:transform 0.2s,box-shadow 0.2s;animation:pulse 2s infinite;font-family:'DM Sans',sans-serif;font-size:0.92rem;font-weight:600;white-space:nowrap}
 .wa-float:hover{transform:scale(1.05);box-shadow:0 6px 28px rgba(37,211,102,0.6)}
 @keyframes pulse{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,0.5)}50%{box-shadow:0 4px 36px rgba(37,211,102,0.8)}}
-.wa-tooltip{display:none}
 
+/* MOBILE */
 @media(max-width:768px){
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-left{padding:2rem 1.2rem 1.5rem;order:1}
+  .hero-right{order:2;grid-template-columns:1fr 1fr;grid-template-rows:160px 160px;padding:0 1.2rem 2rem;gap:6px}
+  .hero-photo.tall{grid-row:span 1}
   .gallery{columns:2}
   nav{padding:0.8rem 1rem}
-  .hero{padding:6rem 1.2rem 3rem}
   section{padding:3.5rem 1.2rem}
-  .cta-group{flex-direction:column;align-items:flex-start}
   .btn-wa{width:100%;justify-content:center}
 }
-@media(max-width:480px){.gallery{columns:1}}
+@media(max-width:480px){
+  .gallery{columns:1}
+  .hero-right{grid-template-rows:130px 130px}
+}
 </style>
 </head>
 <body>
@@ -112,8 +134,9 @@ footer strong{color:var(--accent)}
 </nav>
 
 <!-- HERO -->
-<section class="hero">
-  <div class="hero-inner">
+<div class="hero">
+  <!-- Esquerda: texto -->
+  <div class="hero-left">
     <div class="badge">Móveis Planejados · Curitiba e Região</div>
     <h1>Transformamos seu espaço em <em>obra de arte</em></h1>
     <p class="hero-sub">Móveis sob medida para todos os ambientes, com qualidade artesanal e entrega em até 30 dias. Atendimento personalizado do projeto à instalação.</p>
@@ -124,8 +147,30 @@ footer strong{color:var(--accent)}
       </a>
       <a href="tel:41995479272" class="btn-tel">(41) 99547-9272</a>
     </div>
+    <div class="trust-badges">
+      <div class="badge-item"><span>⏱</span> Entrega em até 30 dias</div>
+      <div class="badge-item"><span>🛡</span> Garantia de 5 anos</div>
+      <div class="badge-item"><span>📐</span> 100% sob medida</div>
+      <div class="badge-item"><span>⭐</span> 12+ anos de experiência</div>
+    </div>
   </div>
-</section>
+
+  <!-- Direita: grade de fotos -->
+  <div class="hero-right">
+    <div class="hero-photo tall">
+      <img src="Cozinha_conceito_aberto.png" alt="Cozinha planejada Curitiba">
+      <div class="hero-photo-label">Cozinha Planejada</div>
+    </div>
+    <div class="hero-photo">
+      <img src="Suite.jpg" alt="Suíte planejada Curitiba">
+      <div class="hero-photo-label">Suíte Master</div>
+    </div>
+    <div class="hero-photo">
+      <img src="Escritorio_Claro.png" alt="Home office planejado">
+      <div class="hero-photo-label">Home Office</div>
+    </div>
+  </div>
+</div>
 
 <!-- PORTFÓLIO -->
 <section class="sec-alt">
@@ -228,3 +273,4 @@ footer strong{color:var(--accent)}
 
 </body>
 </html>
+
